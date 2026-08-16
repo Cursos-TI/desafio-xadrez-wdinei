@@ -33,6 +33,20 @@ void moveDiagonal(char direcaoH, char direcaoV){
     }
 }
 
+void moveCavalo(){
+    printf("(");
+    for (int i = 1; i <= 2; i++){
+        if (i  > 1) {
+             printf(", ");
+        }
+        printf("%s", getDirecao('b'));
+        if (i % 2 == 0){
+            printf(", %s", getDirecao('e'));
+        }
+    }
+    printf(")\n");
+}
+
 int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
@@ -57,8 +71,9 @@ int main() {
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
 
-    moveHorizontalVertical('c');
-    moveDiagonal('e', 'c');
+    //moveHorizontalVertical('c');
+    //moveDiagonal('e', 'c');
+    moveCavalo();
 
     return 0;
 }
