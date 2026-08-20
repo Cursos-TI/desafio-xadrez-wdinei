@@ -25,6 +25,38 @@ void moveHorizontalVertical(char direcao){
 }
 
 /* direcao pode ser C,B,E ou D */
+void moveTorreRecursiva(int casasRestantes){
+    if (casasRestantes <= 0) {
+        return;
+    }
+
+    printf("%s\n", getDirecao('d'));
+    moveTorreRecursiva(casasRestantes-1);    
+}
+
+void moveBispoRecursiva(int casas){
+    if (casas <= 0){
+        return;
+    }
+
+    for (int vertical = 0; vertical < 1; vertical++){
+        for (int horizontal = 0; horizontal < 1; horizontal++)
+        {
+            printf("Cima / Direita\n");
+        }
+    }    moveBispoRecursiva(casas-1);
+}
+
+void moveRainhaRecursiva(int casas){
+    if (casas <= 0){
+        return;
+    }
+
+    printf("Esquerda\n");
+    moveRainhaRecursiva(casas-1);
+}
+
+/* direcao pode ser C,B,E ou D */
 void moveDiagonal(char direcaoH, char direcaoV){
     int i = 1;
     while (i <= numeroDeMovimentos){
@@ -35,14 +67,15 @@ void moveDiagonal(char direcaoH, char direcaoV){
 
 void moveCavalo(){
     printf("(");
-    for (int i = 1; i <= 2; i++){
-        if (i  > 1) {
-             printf(", ");
+    for (int horizontal = 1; horizontal < 2; horizontal++){
+        printf("Esquerda");
+        for (int vertical=1; vertical <=2; vertical++){
+            if (vertical <= 2){
+                printf(", ");
+            }
+            printf("Baixo");
         }
-        printf("%s", getDirecao('b'));
-        if (i % 2 == 0){
-            printf(", %s", getDirecao('e'));
-        }
+        
     }
     printf(")\n");
 }
@@ -73,7 +106,10 @@ int main() {
 
     //moveHorizontalVertical('c');
     //moveDiagonal('e', 'c');
-    moveCavalo();
+    //moveTorreRecursiva(numeroDeMovimentos);
+    moveBispoRecursiva(numeroDeMovimentos);
+    //moveRainhaRecursiva(numeroDeMovimentos);
+    //moveCavalo();
 
     return 0;
 }
